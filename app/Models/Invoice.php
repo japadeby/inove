@@ -3,7 +3,7 @@
 /**
  *  Modelo da tabela de contas (invoices)
  *
- *  Em caso de dúvida, ver documentação Eloquent
+ *  Em caso de dúvida, ver a documentação Eloquent
  *  https://github.com/illuminate/database
  */
 
