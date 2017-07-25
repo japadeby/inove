@@ -1,0 +1,4 @@
+/app/config.php
+composer.lock
+/.settings
+/.settings/**
