@@ -1,0 +1,21 @@
+{
+    "name": "inovedados app",
+    "authors": [
+        {
+            "name": "Daniel Neto",
+            "email": "webnetofire@gmail.com"
+        }
+    ],
+    "require": {
+        "phroute/phroute": "^2.1",
+        "illuminate/database": "^5.4",
+        "illuminate/events": "^5.4",
+        "illuminate/pagination": "^5.4"
+    },
+    "autoload": {        
+        "psr-4": {
+            "App\\": "app/",
+            "System\\": "system/"
+        }
+    }
+}
