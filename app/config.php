@@ -8,10 +8,10 @@
 // banco de dados (ver documentação Eloquent: https://github.com/illuminate/database)
 $_ENV['database'] = [
     'driver' => 'mysql',
-    'username' => 'root',
-    'password' => 'netofire',
-    'host' => 'localhost',
-    'database' => 'inove',
+    'username' => '[username]',
+    'password' => '[password]',
+    'host' => '[hostname]',
+    'database' => '[database]',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => ''
