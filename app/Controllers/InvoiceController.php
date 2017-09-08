@@ -84,6 +84,25 @@ class InvoiceController
     }
     
     /**
+     * GET para /create/{id} - Form de duplicação de conta
+     * @return mixed A view renderizada
+     */
+    public function getDuplicate($id)
+    {
+        try {
+            $invoice = Invoice::findOrFail($id);
+            $duplicate = true;
+            View::render('invoice_form.php', ['invoice' => $invoice, 'duplicate' => $duplicate]);
+        } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            $_SESSION['error'] = $_ENV['error_messages']['not_found'];
+            header("Location: /invoices/create");
+        } catch (\Exception $e) {
+            $_SESSION['error'] = sprintf($_ENV['error_messages']['general'], $e->getMessage());
+            header("Location: /invoices/create");
+        }   
+    }
+    
+    /**
      * POST para / - Criação de conta
      * @return mixed Redireciona para listagem em caso de sucesso, ou mostra o form em caso de falha
      */

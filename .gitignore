@@ -3,3 +3,5 @@ composer.lock
 /.settings
 /.settings/**
 app/config.php
+/.env
+/.htaccess

@@ -38,7 +38,19 @@
                 </tr>
               </thead>
               <tbody>
-              	<?php foreach ($invoices as $invoice) { ?>
+              	<?php 
+              	
+              	$apagar = $areceber = 0;
+              	
+              	foreach ($invoices as $invoice) { 
+              	
+              	    if ($invoice->value > 0) {
+              	        $apagar += $invoice->value - $invoice->discounts()->sum('value');
+              	    } else {
+              	        $areceber += $invoice->value - $invoice->discounts()->sum('value');
+              	    }
+              	    
+              	    ?>
                 <tr>
                   <td><?php print $invoice->due_date ?></td>
                   <td class="<?php print $invoice->value > 0 ? 'green' : 'red'; ?>"><?php print $invoice->value ?></td>
@@ -47,6 +59,7 @@
                   <td><?php print ($invoice->paid) ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>'; ?></td>
                   <td>
                   	<a class="btn btn-xs btn-info" href="/invoices/edit/<?php echo $invoice->id ?>">gerenciar</a>
+                  	<a class="btn btn-xs btn-warning" href="/invoices/duplicate/<?php echo $invoice->id ?>">duplicar</a>
                   	<a class="btn btn-xs btn-danger" href=""  data-toggle="modal" data-target="#myModal" data-id="<?php print $invoice->id ?>">excluir</a>
                   </td>
                 </tr>
@@ -54,6 +67,12 @@
                 
               </tbody>
             </table>
+        </div>
+        
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        	Total de contas a pagar: $ <?php printf('%.2f', $apagar) ?>
+        	
+        	Total de contas a receber: $ <?php printf('%.2f', abs($areceber)) ?>       
         </div>
 
         <div class="clearfix"></div>

@@ -21,7 +21,7 @@
           <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
           
           <form id="form-invoice" class="form-horizontal form-label-left" method="post"  data-parsley-validate 
-          	action="<?php print (isset($invoice)) ? '/invoices/edit/' . $invoice->id : '/invoices'; ?>"> 
+          	action="<?php print (isset($invoice) && (!isset($duplicate) || !$duplicate)) ? '/invoices/edit/' . $invoice->id : '/invoices'; ?>"> 
           
           	<div class="form-group">
           		<label>Tipo <span class="required">*</span></label>
@@ -83,7 +83,7 @@
       </div>
     </div>
     
-    <?php if (isset($invoice)) { ?>
+    <?php if (isset($invoice) && (!isset($duplicate) || !$duplicate)) { ?>
         
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="dashboard_graph">
